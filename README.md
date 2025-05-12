@@ -1,9 +1,10 @@
-# SQL-Basics
-Exercise 1-3 dedicated to SQL fundamentals
---Questions
+## SQL-Basics
+##Exercise 1-3 dedicated to SQL fundamentals
+
 --1. SELECT Statement
 --Write a SQL query to retrieve all columns from the employees table.
 
+'''sql
 select *
     from exercise_1;
 
