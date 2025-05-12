@@ -1,119 +1,134 @@
-## SQL-Basics
-##Exercise 1-3 dedicated to SQL fundamentals
+# 📊 SQL Basics
 
---1. SELECT Statement
---Write a SQL query to retrieve all columns from the employees table.
+This project explores fundamental SQL queries using the `exercise_1` table, covering everything from `SELECT` to `LIMIT`, `WHERE`, logical operators, and more.
 
-'''sql
-select *
-    from exercise_1;
+---
+
+## 1️⃣ SELECT Statement  
+**Retrieve all columns from the employees table.**
+
+```sql
+SELECT * FROM exercise_1;
+2️⃣ SELECT DISTINCT Statement
+Find all unique departments in the employees table.
+
+sql
+Copy code
+SELECT DISTINCT(department)  
+FROM exercise_1;
+3️⃣ ORDER BY Statement
+Get all employees' first and last names, ordered by salary (descending).
+
+sql
+Copy code
+SELECT first_name, last_name, salary  
+FROM exercise_1  
+ORDER BY salary DESC;
+4️⃣ LIMIT Statement
+Retrieve the top 5 highest-paid employees.
+
+sql
+Copy code
+SELECT first_name, last_name, salary  
+FROM exercise_1  
+ORDER BY salary DESC  
+LIMIT 5;
+5️⃣ WHERE Statement
+Find employees who work in the IT department.
+
+sql
+Copy code
+SELECT first_name, last_name, department  
+FROM exercise_1  
+WHERE department = 'IT';
+6️⃣ AND Statement
+Find employees in Finance AND earning more than 58,000.
+
+sql
+Copy code
+SELECT first_name, last_name, department, salary  
+FROM exercise_1  
+WHERE department = 'Finance' AND salary > 58000;
+7️⃣ OR Statement
+Find employees in the HR OR Marketing department.
+
+sql
+Copy code
+SELECT first_name, last_name, department  
+FROM exercise_1  
+WHERE department = 'HR' OR department = 'Marketing';
+8️⃣ NOT Statement
+Find employees NOT in the IT department.
+
+sql
+Copy code
+SELECT first_name, last_name, department  
+FROM exercise_1  
+WHERE NOT department = 'IT';
+9️⃣ IN Statement
+Find employees in HR, IT, or Finance departments.
+
+sql
+Copy code
+SELECT first_name, last_name, department  
+FROM exercise_1  
+WHERE department IN ('HR', 'IT', 'Finance');
+🔟 Combining Conditions
+Find IT employees with salary > 50,000 and based in New York.
+
+sql
+Copy code
+SELECT first_name, last_name, department, salary, city  
+FROM exercise_1  
+WHERE department = 'IT' AND salary > 50000 AND city = 'New York';
+1️⃣1️⃣ WHERE, AND, and ORDER BY
+Finance/Marketing employees earning > 52,000, ordered by salary.
+
+sql
+Copy code
+SELECT first_name, last_name, department, salary  
+FROM exercise_1  
+WHERE department IN ('Finance', 'Marketing') AND salary > 52000  
+ORDER BY salary DESC;
+1️⃣2️⃣ DISTINCT, WHERE, and IN
+Unique cities excluding IT and HR departments.
+
+sql
+Copy code
+SELECT DISTINCT(city)  
+FROM exercise_1  
+WHERE department NOT IN ('IT', 'HR');
+1️⃣3️⃣ WHERE, NOT, AND, ORDER BY
+Employees NOT in Finance, salary > 50,000, ordered by hire date.
+
+sql
+Copy code
+SELECT first_name, last_name, department, salary  
+FROM exercise_1  
+WHERE department NOT IN ('Finance') AND salary > 50000  
+ORDER BY hire_date ASC;
+1️⃣4️⃣ WHERE, OR, IN, and LIMIT
+First 3 employees in Chicago or LA from IT or Marketing.
+
+sql
+Copy code
+SELECT first_name, last_name, city  
+FROM exercise_1  
+WHERE city IN ('Chicago', 'Los Angeles') AND department IN ('IT', 'Marketing')  
+LIMIT 3;
+yaml
+Copy code
+
+---
+
+Would you like me to generate this as a `.md` file for upload too?
 
 
---2. SELECT DISTINCT Statement
---Write a SQL query to find all the unique departments in the employees table.
-select distinct(department)
-        from exercise_1;
-
---3. ORDER BY Statement
---Write a SQL query to retrieve all employees' first and last names, ordered by salary in 
---descending order.
-
-select first_name,last_name,salary
-    from exercise_1
-        order by salary desc;
-
---4. LIMIT Statement
---Write a SQL query to retrieve the top 5 highest-paid employees.
-
-select first_name,last_name,salary
-    from exercise_1
-        order by salary desc
-         limit 5;
 
 
---5. WHERE Statement
---Write an SQL query to find employees who work in the IT department.
-
- select first_name,last_name,department
-    from exercise_1
-        where department='IT' ;   
-        
---6. AND Statement
---Write a SQL query to find employees who work in the Finance department AND have a 
---salary greater than 58,000.
-
-select first_name,last_name,department,salary
-    from exercise_1
-        where department='Finance'
-            AND salary>58000;
-        
 
 
---7. OR Statement
---Write a SQL query to find employees who work in the HR department OR the Marketing 
---department.
 
-select first_name,last_name,department
-    from exercise_1
-        where department='HR' OR department='Marketing';
-        
---8. NOT Statement
---Write a SQL query to find employees who do not work in the IT department.
 
-select first_name,last_name,department
-    from exercise_1
-        where NOT department='IT';
---9. IN Statement
---Write a SQL query to find employees who are in the HR, IT, or Finance departments.
-
-select first_name,last_name,department
-    from exercise_1
-        where department IN ('HR','IT','Finance');
-        
---10. Combining Conditions
---Write a SQL query to find employees who are in the IT department, have a salary greater 
---than 50,000, and are located in New York.
-
-select first_name,last_name,department,salary,city
-    from exercise_1
-        where department='IT'
-            AND salary >50000
-                AND  city ='New York';
---11. Combining WHERE, AND, and ORDER BY
---Write a SQL query to retrieve the first and last names of employees who work in the 
---Finance or Marketing department, earn more than 52,000, and order the results by 
---salary in descending order.
-
-select first_name,last_name,department,salary
-    from exercise_1
-        where department IN ('Finance','Marketing')
-            AND salary>52000
-                order by salary desc;
-
---12. Combining SELECT DISTINCT, WHERE, and IN
---Write a SQL query to find all the unique cities where employees work, excluding those 
---in the IT and HR departments.
-select distinct(city)
-    from exercise_1
-        where not department IN ('IT','HR');
-        
---13. Combining WHERE, NOT, AND, and ORDER BY
---Write a SQL query to retrieve employees who are NOT in the Finance department, 
---have a salary greater than 50,000, and order the results by hire date in ascending 
---order.
-
-select first_name,last_name,department,salary
-    from exercise_1
-        where not department IN ('Finance')
-            AND salary>50000
-                order by hire_date asc;
-        
---14. Combining WHERE, OR, IN, and LIMIT
---Write a SQL query to find the first 3 employees who work in either Chicago or Los 
---Angeles and belong to the IT or Marketing department
-select first_name, last_name,city
-    from exercise_1
-        Where city IN ('Chicago', 'Los Angeles')
-            AND department IN ('IT', 'Marketing')
-                Limit 3;
+                
                 
