@@ -1,5 +1,5 @@
 
-# 📘 Snowflake SQL Fundamentals Practice
+# 📘 Snowflake SQL Fundamentals Practice 1-3
 This document contains beginner SQL exercises completed using Snowflake. Each question is followed by the SQL code used to solve it and a sample of the resulting output based on the dataset provided.
 
 ---
